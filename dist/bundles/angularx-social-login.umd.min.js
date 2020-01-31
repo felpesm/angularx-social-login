@@ -478,16 +478,16 @@
                     function (response) {
                         /** @type {?} */
                         var user = new SocialUser();
-                        /** @type {?} */
-                        var profile = _this.auth2.currentUser.get().getBasicProfile();
-                        /** @type {?} */
-                        var token = _this.auth2.currentUser.get().getAuthResponse(true).access_token;
-                        /** @type {?} */
-                        var backendToken = _this.auth2.currentUser.get().getAuthResponse(true).id_token;
                         if (response && response.code) {
                             user.authorizationCode = response.code;
                         }
                         else {
+                            /** @type {?} */
+                            var profile = _this.auth2.currentUser.get().getBasicProfile();
+                            /** @type {?} */
+                            var token = _this.auth2.currentUser.get().getAuthResponse(true).access_token;
+                            /** @type {?} */
+                            var backendToken = _this.auth2.currentUser.get().getAuthResponse(true).id_token;
                             user.id = profile.getId();
                             user.name = profile.getName();
                             user.email = profile.getEmail();

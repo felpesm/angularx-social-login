@@ -394,16 +394,16 @@ class GoogleLoginProvider extends BaseLoginProvider {
                 (response) => {
                     /** @type {?} */
                     let user = new SocialUser();
-                    /** @type {?} */
-                    let profile = this.auth2.currentUser.get().getBasicProfile();
-                    /** @type {?} */
-                    let token = this.auth2.currentUser.get().getAuthResponse(true).access_token;
-                    /** @type {?} */
-                    let backendToken = this.auth2.currentUser.get().getAuthResponse(true).id_token;
                     if (response && response.code) {
                         user.authorizationCode = response.code;
                     }
                     else {
+                        /** @type {?} */
+                        let profile = this.auth2.currentUser.get().getBasicProfile();
+                        /** @type {?} */
+                        let token = this.auth2.currentUser.get().getAuthResponse(true).access_token;
+                        /** @type {?} */
+                        let backendToken = this.auth2.currentUser.get().getAuthResponse(true).id_token;
                         user.id = profile.getId();
                         user.name = profile.getName();
                         user.email = profile.getEmail();
